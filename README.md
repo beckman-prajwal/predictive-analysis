@@ -1,85 +1,83 @@
-Predictive Analysis Progress Report – CytoFLEX Equipment Log Data
+# 🔍 Predictive Analysis on CytoFLEX Equipment Log Data  
 
-1. Dataset Structure and Exploration
+This project focuses on **exploring, preprocessing, storing, and analyzing CytoFLEX equipment log data** for predictive maintenance and error trend insights.  
 
-The dataset consists of multiple folders, each folder representing a unique Equipment ID.
+---
 
-Within each equipment folder, there are multiple log files corresponding to that equipment.
+## 📂 Dataset Structure & Exploration  
 
-Each log file contains entries with the following attributes:
+- The dataset consists of **multiple folders**, where **each folder = one Equipment ID**.  
+- Inside each equipment folder: multiple log files per equipment.  
+- Each log file contains:  
+  - `Timestamp`  
+  - `Error Message`  
+  - `Error Level` (Error / Fatal)  
 
-Timestamp
+---
 
-Error Message
+## 🛠️ Data Preprocessing  
 
-Error Level (Error or Fatal)
+- Parsed and consolidated log files across all equipment folders into a **structured dataset**.  
+- **Handled missing values** using **forward fill** to maintain continuity in timestamps.  
+- Ensured **multiple errors per timestamp** were correctly aligned.  
+- Verified data quality – minimal noise detected.  
+- Implemented **RAGs (Retrieval-Augmented Generation)** for enhanced exploration and structured error retrieval.  
+- Constructed a **final unified dataset** with columns:  
 
-2. Data Preprocessing
+  | Timestamp | Error Message | Error Level | Equipment ID | File Name |  
 
-Performed parsing and splitting of log files across equipment folders to consolidate into a structured dataset.
+---
 
-Addressed missing values using data imputation (forward fill):
+## 📊 Data Overview  
 
-Multiple errors were often registered at the same timestamp, but some timestamps were not recognized correctly.
+- **Total Parsed Entries:** `1,728,570`  
+- **Total Equipment:** `320`  
+- **Normal Errors:** `1,711,047`  
+- **Fatal Errors:** `17,523`  
+- **Unique Errors:** `7,041`  
+- **Unique Fatal Errors:** `285`  
 
-Forward fill ensured continuity and accurate alignment of error logs with timestamps.
+---
 
-Verified data quality: no significant noise was present.
+## 🗄️ Database Integration  
 
-Implemented RAGs (Retrieval-Augmented Generation) for enhanced exploration of log data and structured retrieval of error information.
+- Stored the structured dataset in **MongoDB (NoSQL)** for:  
+  - Scalable storage  
+  - Faster retrieval  
+  - Efficient querying across equipment IDs and log files  
 
-Constructed a final unified table containing:
+---
 
-Timestamp
+## 📈 Visualization & Analysis  
 
-Error Message
+Developed multiple visualizations to analyze error patterns and predictive signals:  
 
-Error Level (Fatal/Normal)
+- **Top 20 Fatal Errors** → Tabular + Graphical  
+- **Top 20 Normal Errors** → Tabular + Graphical  
+- **All Errors Overview** → Comprehensive tables & visualizations  
+- **Error Trend Graphs per Equipment** → Track error counts over time per equipment  
 
-Equipment ID
+🔽 Implemented **interactive dropdown filters** to switch views:  
+- Normal Errors  
+- Fatal Errors  
+- Unique Errors  
 
-File Name
+---
 
-3. Data Overview
+## 🚀 Next Steps  
 
-After preprocessing and consolidation:
+- Develop **predictive models** to forecast equipment failure timelines.  
+- Identify **parts most likely to fail** based on historical error trends.  
+- Integrate **real-time monitoring dashboard** for proactive alerts.  
 
-Total Parsed Entries: 1,728,570
+---
 
-Total Equipment: 320
+## 📌 Tech Stack  
 
-Normal Errors: 1,711,047
+- **Language:** Python  
+- **Database:** MongoDB (NoSQL)  
+- **Visualization:** Matplotlib, Seaborn, Plotly  
+- **Data Handling:** Pandas, Regex, OS Pathlib  
 
-Fatal Errors: 17,523
-
-Unique Errors: 7,041
-
-Unique Fatal Errors: 285
-
-4. Database Integration
-
-Transferred the processed and structured dataset into NoSQL (MongoDB) for scalable storage, faster retrieval, and efficient querying of error logs across multiple equipment IDs and log files.
-
-5. Visualization and Analysis
-
-Developed multiple visual representations to support error trend analysis and predictive insights:
-
-Top 20 Fatal Errors – shown in both tabular and graphical format.
-
-Top 20 Normal Errors – shown in both tabular and graphical format.
-
-All Errors Overview – comprehensive table and visualization across equipment.
-
-Error Trend Graphs per Equipment – tracked error counts over time for each equipment ID.
-
-Implemented dropdown filters to toggle between:
-
-Normal Errors
-
-Fatal Errors
-
-Unique Errors
-
-
-
+---
 
